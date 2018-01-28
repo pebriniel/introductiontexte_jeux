@@ -18,7 +18,7 @@ var sound = new Array(
 
 var event = new Array(
 
-    {type: 'SPRITE', class:"character-one", sprite: "charactere-move", posx: 0, posy: 150},
+    {type: 'SPRITE', class:"character-one", posx: 0, posy: 150},
     {type: 'MOVE', class:"character-one", sprite: "charactere-move", posx: 0, posx_obj: 150, posy: 150, vitesse: 6},
 
     {type: 'TEXT', soundplay: "sword", soundrepeat: false, sprite: "maya-question", spriteStop: "maya-question-stop", text: "Bonjour ? Qui Ãªtes-vous ?", option: "fondu"},
@@ -58,10 +58,17 @@ function lireText(chaine = "coucou"){
    }
 }
 
+var intervalMove = true;
 function MoveSprite(e = new Array(), sprite = ""){
     if(e.posx_obj && sprite.offsetLeft < e.posx_obj){
+        console.log('dev');
         console.log(sprite.style.offsetLeft);
         sprite.style.left = (sprite.offsetLeft + e.vitesse)+'px';
+    }
+    else{
+        console.log('ok');
+        intervalMove = false;
+        game.click = false;
     }
 }
 
@@ -111,27 +118,35 @@ function lectureEvent(){
            else if(event[e_actuel].type == 'SOUND'){
                 s_key = event[e_actuel].key;
                 playSound(s_key, event[e_actuel].soundrepeat);
+                game.click = false;
+                intervalMove = false;
            }
            else if(event[e_actuel].type == 'SPRITE'){
-               var sprite = document.getElementsByClassName(event[e_actuel].class)[0];
-               sprite.style.top = event[e_actuel].posy;
-               sprite.style.left = event[e_actuel].posx;
+               var s = document.getElementsByClassName(event[e_actuel].class)[0];
+               s.style.top = event[e_actuel].posy;
+               s.style.left = event[e_actuel].posx;
 
                if(event[e_actuel].sprite){
-                   sprite.className = event[e_actuel].sprite;
+                   s.className = event[e_actuel].sprite;
                }
+               game.click = true;
+               intervalMove = false;
            }
            else if(event[e_actuel].type == 'MOVE'){
-                   var sprite = document.getElementsByClassName(event[e_actuel].class)[0];
+                var sprite = document.getElementsByClassName(event[e_actuel].class)[0];
+                if(sprite){
                    sprite.style.top = event[e_actuel].posy;
                    sprite.style.left = event[e_actuel].posx;
-
-                intervalMove = setInterval((function(){MoveSprite(event[e_actuel], sprite); }), 300); //on joue l'interval de texte qiu dois balancer le bordel
+                   intervalMove = setInterval((function(){MoveSprite(event[e_actuel], sprite); }), 300); //on joue l'interval de texte qiu dois balancer le bordel
+               }
+           }
+           else{
+               console.log('erreur'+e_actuel);
            }
        }
        else{
            //e_actuel ++;
-           if(!intervalText && caractere.classList.contains(sprite)){
+           if((!intervalText || !intervalMove) && caractere.classList.contains(sprite)){
                caractere.classList.remove(sprite);
                sprite2 = event[e_actuel].spriteStop;
                caractere.classList.add(sprite2);
@@ -154,9 +169,12 @@ $.ready(document, (function(){
 
    $.click(".button-next", (function(){
        if(!game.click){
-           console.log("ok");
            action_joueur ++;
            game.click = true;
+           console.log("dev");
+       }
+       else{
+           console.log('erreur');
        }
    }));
 
