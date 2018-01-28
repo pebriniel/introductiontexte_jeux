@@ -67,7 +67,7 @@ function MoveSprite(e = new Array(), sprite = ""){
     }
     else{
         console.log('ok');
-        intervalMove = false;
+        clearInterval(intervalMove);
         game.click = false;
     }
 }
@@ -119,7 +119,6 @@ function lectureEvent(){
                 s_key = event[e_actuel].key;
                 playSound(s_key, event[e_actuel].soundrepeat);
                 game.click = false;
-                intervalMove = false;
            }
            else if(event[e_actuel].type == 'SPRITE'){
                var s = document.getElementsByClassName(event[e_actuel].class)[0];
@@ -130,7 +129,6 @@ function lectureEvent(){
                    s.className = event[e_actuel].sprite;
                }
                game.click = true;
-               intervalMove = false;
            }
            else if(event[e_actuel].type == 'MOVE'){
                 var sprite = document.getElementsByClassName(event[e_actuel].class)[0];
