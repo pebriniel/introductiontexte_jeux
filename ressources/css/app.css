@@ -1,0 +1,82 @@
+*{ padding: 0; margin: 0; }
+
+
+#game{
+	position: relative;
+	display: block;
+	width: 257px;
+	height: 390px;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+
+	background-color: black;
+}
+
+
+.textbox{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	height: 60px;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-top: 1px solid white;
+	border-radius: 5px 5px 0px 0px;
+	z-index: 100;
+}
+
+.tbox-content{ color: white; padding: 3px; font-size: 0.8em; }
+
+#screen1{
+	position: relative;
+}
+
+#screen2{
+	position: relative;
+	width: 100%;
+	height: 190px;
+
+}
+
+#screen2 .button-next{
+	width: 50%;
+	height: 80px;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: red;
+}
+
+.caractere{
+	opacity: 1;
+}
+
+.location-0{ /* bureau 1 */
+	width: 257px;
+	height: 190px;
+	background: url('location.png') no-repeat;
+}
+
+.location-1{ /* bureau 2 */
+	width: 257px;
+	height: 190px;
+	background: url('location.png') no-repeat;
+	background-position: -0px -390px;
+}
+
+.location-2{ /* parking */
+	width: 257px;
+	height: 190px;
+	background: url('location.png') no-repeat;
+	background-position: -0px -580px;
+}
+
+.fondu{
+	/*
+	opacity: 1;
+	transition: 2s;
+	*/
+}

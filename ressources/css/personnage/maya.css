@@ -1,0 +1,98 @@
+
+
+.caractere{
+	position: absolute;
+	bottom: 0;
+}
+
+@keyframes maya-triste{  100% { background-position: -597px -2px; } }
+.maya-triste{
+	width: 117px;
+	height: 200px;
+
+	background: url('../../images/maya.png');
+	background-position: -2px -2px;
+	left: 60px;
+	animation: maya-triste 0.8s steps(5) infinite;
+}
+
+.maya-triste-stop{
+	width: 117px;
+	height: 200px;
+
+	background: url('../../images/maya.png');
+	background-position: -2px -2px;
+	left: 60px;
+}
+
+@keyframes maya-reflexion{  100% { background-position: -702px -218px; } }
+.maya-reflexion{
+	width: 138px;
+	height: 200px;
+
+	background: url('../../images/maya.png');
+	background-position: -2px -218px;
+	left: 60px;
+	animation: maya-reflexion 1.2s steps(5) infinite;
+}
+
+.maya-reflexion-stop{
+	width: 138px;
+	height: 200px;
+
+	background: url('../../images/maya.png');
+	background-position: -2px -218px;
+	left: 60px;
+}
+
+@keyframes maya-question{  100% { background-position: -737px -648px; } }
+.maya-question{
+	width: 145px;
+	height: 215px;
+
+	background: url('../../images/maya.png');
+	background-position: -2px -648px;
+	left: 60px;
+	animation: maya-question 1.2s steps(5) infinite;
+}
+
+.maya-question-stop{
+	width: 145px;
+	height: 215px;
+
+	background: url('../../images/maya.png');
+	background-position: -2px -648px;
+	left: 60px;
+}
+
+@keyframes maya-excitation{  100% { background-position: -854px -2453px; } }
+.maya-excitation{
+	width: 140px;
+	height: 210px;
+
+	background: url('../../images/maya.png');
+	background-position: -2px -2453px;
+	left: 58px;
+	animation: maya-excitation 1.2s steps(6) infinite;
+}
+
+.maya-excitation-stop{
+	width: 140px;
+	height: 210px;
+
+	background: url('../../images/maya.png');
+	background-position: -286px -2453px;
+	left: 58px;
+}
+
+/* --- monsieur boutatde ---- */
+@keyframes boutade-neutre{  100% { background-position: -650px -0px; } }
+.boutade-neutre{
+	width: 164px;
+	height: 215px;
+
+	background: url('boutade.png');
+	background-position: -9px -0px;
+	left: 35px;
+	animation: boutade-neutre 1.3s steps(4) infinite;
+}
